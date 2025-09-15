@@ -18,6 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
 
+music_lists = [
+    {'title' : '피차일반', 'artist' : 'UmYull', 'album' : '행복론'},
+    {'title' : 'Teeth', 'artist' : '5 Seconds of Summer', 'album' : 'CALM'},
+    {'title' : '태양물고기', 'artist' : 'YOUNHA', 'album' : 'GROWTH THEORY'},
+]
 def index(request):
     return HttpResponse('<h1>Hello, world!</h1>')
 
@@ -38,6 +43,32 @@ def language(request, lang):
 
 def python(request):
     return HttpResponse('This is python page.')
+
+def musics(request):
+    music_titles = [music['title'] for music in music_lists]
+    music_artists = [music['artist'] for music in music_lists]
+    music_albums = [music['album'] for music in music_lists]
+    ##################################
+    # 상기 list comprehension의 for문 형태
+    # music_titles = []
+    # for music in music_list:
+    #     music_titles.append(music['title'])
+    ##################################
+
+    response_text = '<br>'.join(music_titles)
+    response_text += '<br>'*2 + '<br>'.join(music_artists)
+    response_text += '<br>'*2 + '<br>'.join(music_albums)
+    return HttpResponse(response_text)
+
+def music_detail(request, index):
+    if index > len(music_lists) -1: # 의도되지 않은 접근(없는 index) 방지
+        from django.http import Http404
+        raise Http404
+    music = music_lists[index]
+    response_text = f'<h1>{music["title"]}</h1> <p>아티스트: {music['artist']}</p> <p>앨범: {music['album']}</p>'
+    return HttpResponse(response_text)
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index),
@@ -45,6 +76,9 @@ urlpatterns = [
     path('book_list/<int:num>/',book),
     path('language/<str:lang>/',language), # case A
     path('language/python/',python), # case B
+    path('music/',musics),
+    path('music/<int:index>/',music_detail),
+
 
     # <str:변수명> 변수 사용주의!
     ## case A와 case B를 동시에 작성한 상태에서 language/python/ 을 접속하면?
