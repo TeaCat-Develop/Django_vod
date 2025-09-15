@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+
+# Virtual Environments (pyenv, venv, Poetry)
+.venv/
+.venv-*/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# Django
+*.sqlite3
+db.sqlite3
+/media/
+/staticfiles/
+/static/
+/*.log
+*.pot
+*.pyc
+migrations/__pycache__/
+migrations/*.pyc
+# optionally exclude initial migrations
+#migrations/0001_initial.py
+
+# IDEs
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Node.js / frontend (optional)
+node_modules/
+dist/
+build/
+
+# Misc
+*.swp
+*.bak
+*.tmp
