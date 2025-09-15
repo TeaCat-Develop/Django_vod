@@ -45,9 +45,9 @@ def python(request):
     return HttpResponse('This is python page.')
 
 def musics(request):
-    music_titles = [music['title'] for music in music_lists]
-    music_artists = [music['artist'] for music in music_lists]
-    music_albums = [music['album'] for music in music_lists]
+    music_titles = [
+        f'<a href="/music/{index}/">{music['title']}</a><br>'
+        for index, music in enumerate(music_lists)]
     ##################################
     # 상기 list comprehension의 for문 형태
     # music_titles = []
@@ -55,9 +55,9 @@ def musics(request):
     #     music_titles.append(music['title'])
     ##################################
 
-    response_text = '<br>'.join(music_titles)
-    response_text += '<br>'*2 + '<br>'.join(music_artists)
-    response_text += '<br>'*2 + '<br>'.join(music_albums)
+    response_text ='<br>'
+    for index, title in enumerate(music_titles):
+        response_text += f'<a href="/music/{index}/">{title}</a><br>'
     return HttpResponse(response_text)
 
 def music_detail(request, index):
