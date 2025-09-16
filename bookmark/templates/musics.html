@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for music in music_lists %}
+        {% if forloop.counter <= 3 %}
+            {{ forloop.counter }}위
+            <a href="/music/{{ forloop.counter }}">{{ music.title }}</a><br>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for music in music_list %}
+        {% if forloop.counter0 == index %}
+            <h1>{{ music.title }}</h1>
+            <p>아티스트: {{ music.artist }}</p>
+            <p>앨범: {{music.album}}</p>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
