@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
 from django.shortcuts import render
+from bookmark import views
 
 music_lists = [
     {'title' : '피차일반', 'artist' : 'UmYull', 'album' : '행복론'},
@@ -85,13 +86,16 @@ def music_detail(request, index):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',index),
-    path('book_list/',book_list),
-    path('book_list/<int:num>/',book),
-    path('language/<str:lang>/',language), # case A
-    path('language/python/',python), # case B
-    path('musics/',musics),
-    path('music/<int:index>/',music_detail),
+    # path('',index),
+    # path('book_list/',book_list),
+    # path('book_list/<int:num>/',book),
+    # path('language/<str:lang>/',language), # case A
+    # path('language/python/',python), # case B
+    # path('musics/',musics),
+    # path('music/<int:index>/',music_detail),
+
+    path('bookmark/', views.bookmark_list)
+
     # path ('루트', 뷰 함수명) => 루트가 입력되면 뷰 함수를 실행한다.
     # 루트에 변수 형태가 포함된 경우, 루트에 입력된 값을 가져와 뷰 함수 music_detail의 매개변수로 활용가능.
 
