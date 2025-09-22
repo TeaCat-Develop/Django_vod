@@ -18,6 +18,9 @@ class Meta: # 필수는x 추가적으로 admin 사용할 때 등등 필요하여
     verbose_name = '북마크'
     verbose_name_plural = '북마크 목록'
 
+    def __str__(self):
+        return self.name
+
 # class BookmarkCategory(models.Model):
 
 # makemigrations => migration.py 파일을 만든다.
