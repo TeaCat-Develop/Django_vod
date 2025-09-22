@@ -8,4 +8,4 @@ def blog_list(request):
     context = {
         'blogs': blogs,
     }
-    return render(request, 'blog_list.html', context)
+    return render(request, 'blog/blog_list.html', context)
